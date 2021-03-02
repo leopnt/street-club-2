@@ -28,6 +28,10 @@ settings/fps/force_fps=30
 window/size/width=320
 window/size/height=224
 window/size/resizable=false
+window/size/test_width=640
+window/size/test_height=448
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 
@@ -47,6 +51,10 @@ C={
  ]
 }
 
+[logging]
+
+file_logging/enable_file_logging.pc=false
+
 [physics]
 
 2d/default_gravity=0
@@ -55,6 +63,11 @@ C={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=1
+quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+gles2/compatibility/disable_half_float=true
+batching/precision/uv_contract=true
 environment/default_environment="res://default_env.tres"

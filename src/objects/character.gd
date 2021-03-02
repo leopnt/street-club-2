@@ -4,21 +4,26 @@ export (int) var life:int = 100
 export (int) var power:int = 20
 export (int) var jump:int = 2
 export (int) var technique:int = 50
-export (int) var speed:int = 200
+export (int) var speed:int = 100
 var velocity:Vector2 = Vector2()
 var look:Vector2 = Vector2.RIGHT
 
 func _ready():
 	$JumpTimer.wait_time = jump
 
-func _physics_process(delta):
-	velocity = move_and_slide(velocity)
-
-func _move(vel:Vector2) -> void:
-	velocity = vel * speed
-	if !velocity.x == 0.0:
-		look.x = vel.project(Vector2.RIGHT).normalized().x
+func _move(dir:Vector2) -> void:
+	""" should be called in a physics process """
+	velocity = dir * speed
+	if !velocity.x == 0.0: # prevent move up and down 0 size
+		look.x = dir.project(Vector2.RIGHT).normalized().x
 		$AttackRay.cast_to.x = technique * look.x
+		$AnimatedSprite.flip_h = (velocity.x < 0)
+	
+	velocity = move_and_slide(velocity)
+	$AnimatedSprite.play("run")
+
+func _idle() -> void:
+	$AnimatedSprite.play("idle")
 
 func take_damage(damage:int) -> void:
 	life -= damage

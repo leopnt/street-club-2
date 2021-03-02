@@ -15,3 +15,5 @@ enabled = true
 cast_to = Vector2( 50, 0 )
 
 [node name="JumpTimer" type="Timer" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
