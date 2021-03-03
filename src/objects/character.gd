@@ -1,17 +1,15 @@
 """
-Template class for characters.
-This class is not meant to be used as-is
-but only for child classes
-(see empty properties)
+Template class for characters. This class is not meant to be used as-is
+but only for child classes (see empty properties)
 """
 
 
 extends KinematicBody2D
 
 export (int) var life:int = 100
-export (int) var power:int = 20
+export (int) var power:int = 20 # damage for punch
 export (int) var jump:int = 60 # target max jump height
-export (int) var technique:int = 50
+export (int) var technique:int = 50 # damage for special punch
 export (int) var speed:int = 100
 var velocity:Vector2 = Vector2()
 var look:Vector2 = Vector2.RIGHT
@@ -27,7 +25,7 @@ func _move(dir:Vector2) -> void:
 	velocity = dir * speed
 	if !velocity.x == 0.0: # prevent move up and down 0 size
 		look.x = dir.project(Vector2.RIGHT).normalized().x
-		$AttackRay.cast_to.x = technique * look.x
+		$AttackRay.cast_to.x = look.x
 		$Jumpable/Sprite.flip_h = (velocity.x < 0)
 	
 	velocity = move_and_slide(velocity)
@@ -72,10 +70,18 @@ func is_jumping() -> bool:
 func _punch() -> void:
 	if $AttackRay.is_colliding():
 		var collider = $AttackRay.get_collider()
-		if collider.has_method("take_damage"):
+		if collider.has_method("take_damage"): # check it's a character
 			collider.take_damage(power)
 	
 	state_machine.travel("attack1")
+
+func _special_punch() -> void:
+	if $AttackRay.is_colliding():
+		var collider = $AttackRay.get_collider()
+		if collider.has_method("take_damage"): # # check it's a character
+			collider.take_damage(technique)
+	
+	state_machine.travel("attack2")
 
 func _on_JumpTween_tween_completed(object, key):
 	$Jumpable/FallTween.start()

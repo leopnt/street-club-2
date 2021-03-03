@@ -33,8 +33,7 @@ func _input(event):
 	if event.is_action_type():
 		if stamina > 0:
 			if event.is_action_pressed("A"):
-				# TODO: SPECIAL
-				pass
+				_special_punch()
 			if event.is_action_pressed("B"):
 				_punch()
 			if event.is_action_pressed("C"):
@@ -46,6 +45,9 @@ func _input(event):
 
 func _punch() -> void:
 	._punch()
+
+func _special_punch() -> void:
+	._special_punch()
 	stamina -= 1
 
 func _dispose() -> void:

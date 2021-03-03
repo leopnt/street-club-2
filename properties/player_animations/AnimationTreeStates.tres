@@ -1,7 +1,13 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=20 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=29 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "attack1"
 
 [sub_resource type="AnimationNodeAnimation" id=15]
 animation = "attack1"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "attack2"
 
 [sub_resource type="AnimationNodeAnimation" id=5]
 animation = "fall"
@@ -37,8 +43,6 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 switch_mode = 2
-auto_advance = true
-priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
@@ -49,16 +53,38 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
 [resource]
 states/attack1/node = SubResource( 15 )
-states/attack1/position = Vector2( -23.5578, -185.768 )
+states/attack1/position = Vector2( -56.5578, -177.768 )
+"states/attack1 2/node" = SubResource( 24 )
+"states/attack1 2/position" = Vector2( 616.8, -177.768 )
+states/attack2/node = SubResource( 25 )
+states/attack2/position = Vector2( 616.8, -87.1501 )
 states/fall/node = SubResource( 5 )
-states/fall/position = Vector2( 377.442, -240.768 )
+states/fall/position = Vector2( 446.442, -265.768 )
 states/idle/node = SubResource( 1 )
-states/idle/position = Vector2( 94.4422, 14.2361 )
+states/idle/position = Vector2( 34.4422, 9.2361 )
 states/jump/node = SubResource( 6 )
-states/jump/position = Vector2( 216.442, -278.768 )
+states/jump/position = Vector2( 154.442, -265.768 )
 states/run/node = SubResource( 2 )
 states/run/position = Vector2( 325.442, 14.2361 )
-transitions = [ "idle", "run", SubResource( 3 ), "run", "idle", SubResource( 4 ), "idle", "jump", SubResource( 7 ), "run", "jump", SubResource( 8 ), "fall", "idle", SubResource( 11 ), "jump", "fall", SubResource( 12 ), "jump", "run", SubResource( 13 ), "fall", "run", SubResource( 14 ), "idle", "attack1", SubResource( 18 ), "attack1", "idle", SubResource( 19 ), "attack1", "run", SubResource( 20 ), "run", "attack1", SubResource( 21 ), "jump", "attack1", SubResource( 22 ), "fall", "attack1", SubResource( 23 ) ]
-graph_offset = Vector2( -250.086, -290.43 )
+transitions = [ "idle", "run", SubResource( 3 ), "run", "idle", SubResource( 4 ), "idle", "jump", SubResource( 7 ), "run", "jump", SubResource( 8 ), "fall", "idle", SubResource( 11 ), "jump", "fall", SubResource( 12 ), "jump", "run", SubResource( 13 ), "fall", "run", SubResource( 14 ), "idle", "attack1", SubResource( 18 ), "attack1", "idle", SubResource( 19 ), "attack1", "run", SubResource( 20 ), "run", "attack1", SubResource( 21 ), "jump", "attack1", SubResource( 22 ), "fall", "attack1", SubResource( 23 ), "attack2", "run", SubResource( 26 ), "attack2", "idle", SubResource( 27 ), "attack1 2", "attack2", SubResource( 28 ), "fall", "attack1 2", SubResource( 29 ), "jump", "attack1 2", SubResource( 30 ), "idle", "attack1 2", SubResource( 31 ), "run", "attack1 2", SubResource( 32 ) ]
+graph_offset = Vector2( -86.3156, -205.382 )
