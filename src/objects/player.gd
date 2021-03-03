@@ -29,10 +29,8 @@ func apply_inputs() -> void:
 		is_move_input_active = true
 	move_dir = move_dir.normalized()
 	
-	if is_move_input_active: # avoid calling character move every frame
-		_move(move_dir)
-	else:
-		_idle()
+	# avoid calling character move every frame
+	_move(move_dir) if (is_move_input_active) else _idle()
 
 func _is_move_input_active():
 	if Input.is_action_pressed('ui_right'):

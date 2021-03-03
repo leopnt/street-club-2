@@ -14,6 +14,17 @@ shape = SubResource( 1 )
 enabled = true
 cast_to = Vector2( 50, 0 )
 
-[node name="JumpTimer" type="Timer" parent="."]
+[node name="Jumpable" type="Node2D" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="JumpTween" type="Tween" parent="Jumpable"]
+playback_speed = 4.0
+playback/speed = 4.0
+
+[node name="FallTween" type="Tween" parent="Jumpable"]
+playback_speed = 4.0
+playback/speed = 4.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Jumpable"]
+playing = true
+[connection signal="tween_completed" from="Jumpable/JumpTween" to="." method="_on_JumpTween_tween_completed"]
+[connection signal="tween_completed" from="Jumpable/FallTween" to="." method="_on_FallTween_tween_completed"]
