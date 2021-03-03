@@ -6,7 +6,7 @@ var stamina:int = max_stamina
 func _ready():
 	pass
 
-func _physics_process(delta):
+func _process(delta):
 	apply_inputs()
 
 func apply_inputs() -> void:

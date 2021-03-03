@@ -1,0 +1,43 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=13 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "fall"
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=3]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=4]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+
+[resource]
+states/fall/node = SubResource( 5 )
+states/fall/position = Vector2( 293.442, -163.768 )
+states/idle/node = SubResource( 1 )
+states/idle/position = Vector2( 94.4422, 14.2361 )
+states/jump/node = SubResource( 6 )
+states/jump/position = Vector2( 94.4422, -139.768 )
+states/run/node = SubResource( 2 )
+states/run/position = Vector2( 325.442, 14.2361 )
+transitions = [ "idle", "run", SubResource( 3 ), "run", "idle", SubResource( 4 ), "idle", "jump", SubResource( 7 ), "run", "jump", SubResource( 8 ), "fall", "idle", SubResource( 11 ), "jump", "fall", SubResource( 12 ), "jump", "run", SubResource( 13 ), "fall", "run", SubResource( 14 ) ]
+graph_offset = Vector2( -232.463, -186.768 )

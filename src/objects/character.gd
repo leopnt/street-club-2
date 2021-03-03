@@ -1,3 +1,11 @@
+"""
+Template class for characters.
+This class is not meant to be used as-is
+but only for child classes
+(see empty properties)
+"""
+
+
 extends KinematicBody2D
 
 export (int) var life:int = 100
@@ -7,25 +15,28 @@ export (int) var technique:int = 50
 export (int) var speed:int = 100
 var velocity:Vector2 = Vector2()
 var look:Vector2 = Vector2.RIGHT
-
+var state_machine:AnimationNodeStateMachinePlayback
 
 func _ready():
-	pass
+	state_machine = $Jumpable/AnimationTree.get("parameters/playback")
+	# in the editor for child class, set AnimationTree/Active to true
+	state_machine.start("idle")
 
 func _move(dir:Vector2) -> void:
-	""" should be called in a physics process """
+	""" should be called in a _process() """
 	velocity = dir * speed
 	if !velocity.x == 0.0: # prevent move up and down 0 size
 		look.x = dir.project(Vector2.RIGHT).normalized().x
 		$AttackRay.cast_to.x = technique * look.x
-		$Jumpable/AnimatedSprite.flip_h = (velocity.x < 0)
+		$Jumpable/Sprite.flip_h = (velocity.x < 0)
 	
 	velocity = move_and_slide(velocity)
-	$Jumpable/AnimatedSprite.play("run")
+	state_machine.travel("run")
 
 func _idle() -> void:
+	""" should be called in a _process() """
 	if !is_jumping():
-		$Jumpable/AnimatedSprite.play("idle")
+		state_machine.travel("idle")
 
 func take_damage(damage:int) -> void:
 	life -= damage
@@ -49,8 +60,8 @@ func _jump() -> void:
 		
 		# initialize jump sequence
 		$Jumpable/JumpTween.start()
-		$Jumpable/AnimatedSprite.play("jump")
 		print("jump start")
+		state_machine.travel("jump")
 
 func is_jumping() -> bool:
 	if $Jumpable/JumpTween.is_active() || $Jumpable/FallTween.is_active():
@@ -67,6 +78,7 @@ func _punch() -> void:
 func _on_JumpTween_tween_completed(object, key):
 	$Jumpable/FallTween.start()
 	print("reached max jump")
+	state_machine.travel("fall")
 
 func _on_FallTween_tween_completed(object, key):
 	print("jump end")
