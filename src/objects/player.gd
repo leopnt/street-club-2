@@ -6,9 +6,6 @@ var stamina:int = max_stamina
 func _ready():
 	pass
 
-func _process(delta):
-	print(stamina)
-
 func _physics_process(delta):
 	apply_inputs()
 
@@ -31,17 +28,6 @@ func apply_inputs() -> void:
 	
 	# avoid calling character move every frame
 	_move(move_dir) if (is_move_input_active) else _idle()
-
-func _is_move_input_active():
-	if Input.is_action_pressed('ui_right'):
-		return true
-	if Input.is_action_pressed('ui_left'):
-		return true
-	if Input.is_action_pressed('ui_down'):
-		return true
-	if Input.is_action_pressed('ui_up'):
-		return true
-	return false
 
 func _input(event):
 	if event.is_action_type():

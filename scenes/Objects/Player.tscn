@@ -7,18 +7,17 @@
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="JumpTween" parent="Jumpable" index="1"]
+[node name="StaminaReloader" type="Timer" parent="." index="2"]
+
+[node name="JumpTween" parent="Jumpable" index="0"]
 playback_speed = 3.0
 playback/speed = 3.0
 
-[node name="FallTween" parent="Jumpable" index="2"]
+[node name="FallTween" parent="Jumpable" index="1"]
 playback_speed = 3.0
 playback/speed = 3.0
 
-[node name="AnimatedSprite" parent="Jumpable" index="3"]
+[node name="AnimatedSprite" parent="Jumpable" index="2"]
 frames = ExtResource( 3 )
 animation = "jump"
-frame = 1
-
-[node name="StaminaReloader" type="Timer" parent="." index="2"]
 [connection signal="timeout" from="StaminaReloader" to="." method="_on_StaminaReloader_timeout"]
