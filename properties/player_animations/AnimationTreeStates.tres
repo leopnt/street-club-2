@@ -1,4 +1,7 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=13 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=20 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "attack1"
 
 [sub_resource type="AnimationNodeAnimation" id=5]
 animation = "fall"
@@ -30,14 +33,32 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
 [resource]
+states/attack1/node = SubResource( 15 )
+states/attack1/position = Vector2( -23.5578, -185.768 )
 states/fall/node = SubResource( 5 )
-states/fall/position = Vector2( 293.442, -163.768 )
+states/fall/position = Vector2( 377.442, -240.768 )
 states/idle/node = SubResource( 1 )
 states/idle/position = Vector2( 94.4422, 14.2361 )
 states/jump/node = SubResource( 6 )
-states/jump/position = Vector2( 94.4422, -139.768 )
+states/jump/position = Vector2( 216.442, -278.768 )
 states/run/node = SubResource( 2 )
 states/run/position = Vector2( 325.442, 14.2361 )
-transitions = [ "idle", "run", SubResource( 3 ), "run", "idle", SubResource( 4 ), "idle", "jump", SubResource( 7 ), "run", "jump", SubResource( 8 ), "fall", "idle", SubResource( 11 ), "jump", "fall", SubResource( 12 ), "jump", "run", SubResource( 13 ), "fall", "run", SubResource( 14 ) ]
-graph_offset = Vector2( -232.463, -186.768 )
+transitions = [ "idle", "run", SubResource( 3 ), "run", "idle", SubResource( 4 ), "idle", "jump", SubResource( 7 ), "run", "jump", SubResource( 8 ), "fall", "idle", SubResource( 11 ), "jump", "fall", SubResource( 12 ), "jump", "run", SubResource( 13 ), "fall", "run", SubResource( 14 ), "idle", "attack1", SubResource( 18 ), "attack1", "idle", SubResource( 19 ), "attack1", "run", SubResource( 20 ), "run", "attack1", SubResource( 21 ), "jump", "attack1", SubResource( 22 ), "fall", "attack1", SubResource( 23 ) ]
+graph_offset = Vector2( -250.086, -290.43 )

@@ -74,6 +74,8 @@ func _punch() -> void:
 		var collider = $AttackRay.get_collider()
 		if collider.has_method("take_damage"):
 			collider.take_damage(power)
+	
+	state_machine.travel("attack1")
 
 func _on_JumpTween_tween_completed(object, key):
 	$Jumpable/FallTween.start()
