@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Objects/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/ennemy.gd" type="Script" id=2]
 
-[sub_resource type="AnimationNodeStateMachine" id=1]
-graph_offset = Vector2( -368.794, 0 )
+[sub_resource type="AnimationNodeStateMachine" id=4]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
 
 [node name="Ennemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="AnimationTree" parent="Jumpable" index="2"]
-tree_root = SubResource( 1 )
-active = true
+tree_root = SubResource( 4 )
 parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="Jumpable/Sprite" index="0"]
+anims/idle = SubResource( 3 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attack2.png-5f01523f5b03243cfb94efa04cb35aa2.stex"
+path="res://.import/Renegade_Spritesheet.png-fe8d817235a215bdfba66ffd3c908241.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Martial_Hero/Sprites/Attack2.png"
-dest_files=[ "res://.import/Attack2.png-5f01523f5b03243cfb94efa04cb35aa2.stex" ]
+source_file="res://assets/Characters/Renegade_Spritesheet.png"
+dest_files=[ "res://.import/Renegade_Spritesheet.png-fe8d817235a215bdfba66ffd3c908241.stex" ]
 
 [params]
 

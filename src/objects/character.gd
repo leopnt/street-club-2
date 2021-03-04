@@ -8,9 +8,10 @@ extends KinematicBody2D
 
 export (int) var life:int = 100
 export (int) var power:int = 20 # damage for punch
-export (int) var jump:int = 60 # target max jump height
+export (int) var jump:int = 40 # target max jump height
 export (int) var technique:int = 50 # damage for special punch
-export (int) var speed:int = 100
+export (int) var speed:int = 50
+export (int) var hit_range:int = 30 # length of raycast
 var velocity:Vector2 = Vector2()
 var look:Vector2 = Vector2.RIGHT
 var state_machine:AnimationNodeStateMachinePlayback
@@ -25,11 +26,12 @@ func _move(dir:Vector2) -> void:
 	velocity = dir * speed
 	if !velocity.x == 0.0: # prevent move up and down 0 size
 		look.x = dir.project(Vector2.RIGHT).normalized().x
-		$AttackRay.cast_to.x = look.x
+		$AttackRay.cast_to.x = hit_range * look.x
 		$Jumpable/Sprite.flip_h = (velocity.x < 0)
-	
+		
 	velocity = move_and_slide(velocity)
-	state_machine.travel("run")
+	if !is_jumping():
+		state_machine.travel("run")
 
 func _idle() -> void:
 	""" should be called in a _process() """
@@ -50,10 +52,10 @@ func _jump() -> void:
 	if !is_jumping():
 		# reset jump tweens
 		$Jumpable/JumpTween.interpolate_property($Jumpable, "position:y",
-				0, -jump, 1,
+				0, -jump, 0.7,
 				Tween.TRANS_SINE, Tween.EASE_OUT)
 		$Jumpable/FallTween.interpolate_property($Jumpable, "position:y",
-				-jump, 0, 1,
+				-jump, 0, 0.7,
 				Tween.TRANS_SINE, Tween.EASE_IN)
 		
 		# initialize jump sequence
