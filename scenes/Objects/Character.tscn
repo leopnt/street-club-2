@@ -28,7 +28,6 @@ playback/speed = 4.0
 anim_player = NodePath("../Sprite/AnimationPlayer")
 
 [node name="Sprite" type="Sprite" parent="Jumpable"]
-scale = Vector2( 2, 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Jumpable/Sprite"]
 [connection signal="tween_completed" from="Jumpable/JumpTween" to="." method="_on_JumpTween_tween_completed"]
