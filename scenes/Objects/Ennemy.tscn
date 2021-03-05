@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Objects/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/ennemy.gd" type="Script" id=2]
 
-[sub_resource type="AnimationNodeStateMachine" id=4]
+[sub_resource type="AnimationNodeStateMachine" id=1]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -12,10 +12,15 @@ resource_name = "idle"
 
 [node name="Ennemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+speed = 15
+
+[node name="AttackTrigger" type="Timer" parent="." index="0"]
+one_shot = true
 
 [node name="AnimationTree" parent="Jumpable" index="2"]
-tree_root = SubResource( 4 )
+tree_root = SubResource( 1 )
 parameters/playback = SubResource( 2 )
 
 [node name="AnimationPlayer" parent="Jumpable/Sprite" index="0"]
 anims/idle = SubResource( 3 )
+[connection signal="timeout" from="AttackTrigger" to="." method="_on_AttackTrigger_timeout"]

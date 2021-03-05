@@ -11,7 +11,7 @@ export (int) var power:int = 20 # damage for punch
 export (int) var jump:int = 40 # target max jump height
 export (int) var technique:int = 50 # damage for special punch
 export (int) var speed:int = 50
-export (int) var hit_range:int = 30 # length of raycast
+onready var hit_range:int = $AttackRay.cast_to.length()
 var velocity:Vector2 = Vector2()
 var look:Vector2 = Vector2.RIGHT
 var state_machine:AnimationNodeStateMachinePlayback
@@ -24,14 +24,15 @@ func _ready():
 func _move(dir:Vector2) -> void:
 	""" should be called in a _process() """
 	velocity = dir * speed
-	if !velocity.x == 0.0: # prevent move up and down 0 size
-		look.x = dir.project(Vector2.RIGHT).normalized().x
-		$AttackRay.cast_to.x = hit_range * look.x
-		$Jumpable/Sprite.flip_h = (velocity.x < 0)
-		
 	velocity = move_and_slide(velocity)
 	if !is_jumping():
 		state_machine.travel("run")
+
+func _look_at(dir:Vector2) -> void:
+	if !dir.x == 0.0: # prevent 0 size rayCast for up/down move
+		$Jumpable/Sprite.flip_h = (velocity.x < 0)
+		look.x = dir.project(Vector2.RIGHT).normalized().x
+		$AttackRay.cast_to.x = hit_range * look.x
 
 func _idle() -> void:
 	""" should be called in a _process() """
@@ -40,7 +41,7 @@ func _idle() -> void:
 
 func take_damage(damage:int) -> void:
 	life -= damage
-	print(self, " took damage. Life: ", life)
+	print("Character::>", self, " took damage. Life: ", life)
 	if life <= 0:
 		_dispose()
 
@@ -80,7 +81,9 @@ func _punch() -> void:
 func _special_punch() -> void:
 	if $AttackRay.is_colliding():
 		var collider = $AttackRay.get_collider()
-		if collider.has_method("take_damage"): # # check it's a character
+		
+		# check if collider is a Character object
+		if collider is get_script():
 			collider.take_damage(technique)
 	
 	state_machine.travel("attack2")

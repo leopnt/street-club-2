@@ -27,7 +27,11 @@ func apply_inputs() -> void:
 	move_dir = move_dir.normalized()
 	
 	# avoid calling character move every frame
-	_move(move_dir) if (is_move_input_active) else _idle()
+	if is_move_input_active:
+		_look_at(move_dir)
+		_move(move_dir)
+	else:
+		 _idle()
 
 func _input(event):
 	if event.is_action_type():
@@ -51,7 +55,7 @@ func _special_punch() -> void:
 	stamina -= 1
 
 func _dispose() -> void:
-	print("player dead")
+	print("Player::>player dead")
 
 
 func _on_StaminaReloader_timeout():
