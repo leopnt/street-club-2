@@ -8,7 +8,7 @@ func _ready():
 
 func _process(delta):
 	if !locked:
-		lerp_speed = lerp(lerp_speed, 1.0, 0.001)
+		lerp_speed = lerp(lerp_speed, 1.0, 0.01)
 		if Global.player.position.x > position.x:
 			position.x = lerp(position.x, Global.player.position.x, lerp_speed)
 

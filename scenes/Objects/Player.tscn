@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Objects/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/player.gd" type="Script" id=2]
 [ext_resource path="res://properties/player_animations/jump.tres" type="Animation" id=3]
-[ext_resource path="res://assets/Characters/Renegade_Spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/Characters/protagonist_spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://properties/player_animations/run.tres" type="Animation" id=5]
 [ext_resource path="res://properties/player_animations/idle.tres" type="Animation" id=6]
 [ext_resource path="res://properties/player_animations/fall.tres" type="Animation" id=7]
@@ -37,9 +37,9 @@ parameters/playback = SubResource( 1 )
 
 [node name="Sprite" parent="Jumpable" index="3"]
 texture = ExtResource( 4 )
-vframes = 7
-hframes = 24
-frame = 27
+vframes = 5
+hframes = 5
+frame = 6
 region_rect = Rect2( 0, 0, 24, 32 )
 
 [node name="AnimationPlayer" parent="Jumpable/Sprite" index="0"]

@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/ui.gd" type="Script" id=1]
+[ext_resource path="res://assets/Characters/head.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.960784, 0.94902, 0.188235, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.823529, 0.823529, 0.686275, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color( 0, 0, 0, 0.4 )
+shadow_size = 3
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 310.0
+margin_bottom = 24.0
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 131.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 0 )
+custom_styles/panel = SubResource( 3 )
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+margin_left = 28.0
+margin_right = 131.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 103.0
+margin_bottom = 14.0
+text = "Marler"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 103.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 6 )
+size_flags_vertical = 2
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+step = 1.0
+value = 80.0
+percent_visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 135.0
+margin_right = 175.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 40, 0 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 179.0
+margin_right = 310.0
+margin_bottom = 24.0
+size_flags_horizontal = 3

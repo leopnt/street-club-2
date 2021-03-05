@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://src/global.gd"
+Utils="*res://src/utils.gd"
 
 [debug]
 

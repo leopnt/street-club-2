@@ -6,7 +6,8 @@ but only for child classes (see empty properties)
 
 extends KinematicBody2D
 
-export (int) var life:int = 100
+export (int) var max_life:int = 100
+onready var life:int = max_life
 export (int) var power:int = 20 # damage for punch
 export (int) var jump:int = 20 # target max jump height
 export (int) var technique:int = 50 # damage for special punch
@@ -41,6 +42,7 @@ func _idle() -> void:
 
 func take_damage(damage:int) -> void:
 	life -= damage
+	Global.ui.update()
 	print("Character::>", self, " took damage. Life: ", life)
 	if life <= 0:
 		_dispose()
