@@ -17,6 +17,9 @@
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="AttackRay" parent="." index="1"]
+collision_mask = 2
+
 [node name="StaminaReloader" type="Timer" parent="." index="2"]
 
 [node name="JumpTween" parent="Jumpable" index="0"]

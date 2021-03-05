@@ -73,7 +73,8 @@ func is_jumping() -> bool:
 func _punch() -> void:
 	if $AttackRay.is_colliding():
 		var collider = $AttackRay.get_collider()
-		if collider.has_method("take_damage"): # check it's a character
+		# check if collider is a Character object
+		if collider.has_method("take_damage"):
 			collider.take_damage(power)
 	
 	state_machine.travel("attack1")
@@ -81,9 +82,8 @@ func _punch() -> void:
 func _special_punch() -> void:
 	if $AttackRay.is_colliding():
 		var collider = $AttackRay.get_collider()
-		
 		# check if collider is a Character object
-		if collider is get_script():
+		if collider.has_method("take_damage"):
 			collider.take_damage(technique)
 	
 	state_machine.travel("attack2")

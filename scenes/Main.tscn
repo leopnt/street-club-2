@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Objects/Ennemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Objects/Map.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Objects/LevelZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/objects/camera.gd" type="Script" id=6]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -13,8 +15,22 @@ script = ExtResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.75, 0.75 )
+script = ExtResource( 6 )
+
+[node name="PlayerBoundaries" type="StaticBody2D" parent="Camera2D"]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/PlayerBoundaries"]
+build_mode = 1
+polygon = PoolVector2Array( -120.026, -27.7488, 120.391, -27.7488, 120.391, 47.9118, -120.733, 47.9118 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
-[node name="Ennemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 110.157, 54.6583 )
+[node name="Spawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 75.6737, 0 )
+
+[node name="Ennemy" parent="Spawner" instance=ExtResource( 3 )]
+position = Vector2( 33.6894, 27.6725 )
+
+[node name="Ennemy2" parent="Spawner" instance=ExtResource( 3 )]
+position = Vector2( 24.6862, -14.4943 )

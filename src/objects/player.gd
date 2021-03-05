@@ -4,7 +4,7 @@ export (int) var max_stamina:int = 20
 var stamina:int = max_stamina
 
 func _ready():
-	pass
+	Global.player = self
 
 func _process(delta):
 	apply_inputs()
