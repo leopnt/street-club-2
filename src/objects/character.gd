@@ -8,7 +8,7 @@ extends KinematicBody2D
 
 export (int) var life:int = 100
 export (int) var power:int = 20 # damage for punch
-export (int) var jump:int = 40 # target max jump height
+export (int) var jump:int = 20 # target max jump height
 export (int) var technique:int = 50 # damage for special punch
 export (int) var speed:int = 50
 onready var hit_range:int = $AttackRay.cast_to.length()
@@ -51,12 +51,13 @@ func _dispose() -> void:
 
 func _jump() -> void:
 	if !is_jumping():
+		var jump_speed = 1.4
 		# reset jump tweens
 		$Jumpable/JumpTween.interpolate_property($Jumpable, "position:y",
-				0, -jump, 0.7,
+				0, -jump, 1 / jump_speed,
 				Tween.TRANS_SINE, Tween.EASE_OUT)
 		$Jumpable/FallTween.interpolate_property($Jumpable, "position:y",
-				-jump, 0, 0.7,
+				-jump, 0, 1 / jump_speed,
 				Tween.TRANS_SINE, Tween.EASE_IN)
 		
 		# initialize jump sequence

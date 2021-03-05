@@ -18,7 +18,6 @@ zoom = Vector2( 0.75, 0.75 )
 script = ExtResource( 6 )
 
 [node name="PlayerBoundaries" type="StaticBody2D" parent="Camera2D"]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/PlayerBoundaries"]
 build_mode = 1
