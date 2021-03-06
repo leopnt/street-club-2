@@ -39,7 +39,7 @@ parameters/playback = SubResource( 1 )
 texture = ExtResource( 4 )
 vframes = 5
 hframes = 5
-frame = 6
+frame = 10
 region_rect = Rect2( 0, 0, 24, 32 )
 
 [node name="AnimationPlayer" parent="Jumpable/Sprite" index="0"]
