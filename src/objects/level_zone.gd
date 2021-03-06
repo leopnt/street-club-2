@@ -4,6 +4,7 @@ extends Node2D
 const Ennemy = preload("res://src/objects/ennemy.gd")
 
 var ennemies_remaining:int
+export(bool) var is_last_level = false
 
 func _ready():
 	for child in get_children():
@@ -28,4 +29,4 @@ func _on_ennemy_tree_exited() -> void:
 		_on_level_zone_cleared()
 
 func _on_level_zone_cleared() -> void:
-	Global.camera.unlock()
+	Global.ui.show_win() if is_last_level else Global.camera.unlock()

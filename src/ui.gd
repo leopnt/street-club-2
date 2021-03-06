@@ -13,8 +13,13 @@ func update() -> void:
 func show_gameover() -> void:
 	$GameoverScreen/AnimationPlayer.play("fade_in")
 	$GameoverScreen/VBoxContainer/ButtonRetry.grab_focus()
+	get_tree().paused = true
 
+func show_win() -> void:
+	$WinScreen/AnimationPlayer.play("fade_in")
+	$WinScreen/VBoxContainer/ButtonRestart.grab_focus()
+	get_tree().paused = true
 
-func _on_ButtonRetry_pressed():
+func _on_ButtonRestart_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()

@@ -28,14 +28,25 @@ build_mode = 1
 polygon = PoolVector2Array( -120.171, -13.0975, 120.262, -13.6554, 120.006, 56.246, -120.262, 56.9735 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -60.6814, 13.8593 )
 
-[node name="Spawner" parent="." instance=ExtResource( 5 )]
+[node name="LevelZone" parent="." instance=ExtResource( 5 )]
 position = Vector2( 75.6737, 0 )
 
-[node name="Ennemy" parent="Spawner" instance=ExtResource( 3 )]
+[node name="Ennemy" parent="LevelZone" instance=ExtResource( 3 )]
 position = Vector2( 33.6894, 27.6725 )
 
-[node name="Ennemy2" parent="Spawner" instance=ExtResource( 3 )]
+[node name="Ennemy2" parent="LevelZone" instance=ExtResource( 3 )]
+position = Vector2( 24.6862, -14.4943 )
+
+[node name="LevelZone2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 180.445, 0 )
+is_last_level = true
+
+[node name="Ennemy" parent="LevelZone2" instance=ExtResource( 3 )]
+position = Vector2( -82.1274, 48.1632 )
+
+[node name="Ennemy2" parent="LevelZone2" instance=ExtResource( 3 )]
 position = Vector2( 24.6862, -14.4943 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
