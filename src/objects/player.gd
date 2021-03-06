@@ -56,6 +56,9 @@ func _special_punch() -> void:
 
 func _dispose() -> void:
 	print("Player::>player dead")
+	state_machine.travel("death")
+	Global.ui.show_gameover()
+	get_tree().paused = true
 
 
 func _on_StaminaReloader_timeout():

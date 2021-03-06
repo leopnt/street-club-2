@@ -1,31 +1,35 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/ui.gd" type="Script" id=1]
 [ext_resource path="res://assets/Characters/head.png" type="Texture" id=2]
 [ext_resource path="res://properties/theme/theme.tres" type="Theme" id=3]
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
+[ext_resource path="res://properties/theme/outrun_future_font_16.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.960784, 0.94902, 0.188235, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.823529, 0.823529, 0.686275, 1 )
+bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 1, 1, 1, 1 )
+bg_color = Color( 0.960784, 0.94902, 0.188235, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -33,7 +37,53 @@ corner_radius_bottom_left = 1
 shadow_color = Color( 0, 0, 0, 0.4 )
 shadow_size = 3
 
+[sub_resource type="Animation" id=5]
+resource_name = "FadeOut"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_in"
+length = 5.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="UI" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
@@ -45,9 +95,9 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
+margin_left = 5.44545
 margin_top = 5.0
-margin_right = -5.0
+margin_right = -4.55457
 margin_bottom = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,7 +117,7 @@ size_flags_horizontal = 3
 margin_right = 24.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 24, 0 )
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="ColorRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer/Panel"]
 anchor_left = 0.5
@@ -102,8 +152,8 @@ margin_right = 103.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 0, 6 )
 size_flags_vertical = 2
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 step = 1.0
 value = 100.0
 percent_visible = false
@@ -119,3 +169,62 @@ margin_left = 179.0
 margin_right = 310.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
+
+[node name="EnterGameScreen" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnterGameScreen"]
+anims/FadeOut = SubResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="EnterGameScreen"]
+margin_right = 320.0
+margin_bottom = 224.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="GameoverScreen" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameoverScreen"]
+anims/fade_in = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="GameoverScreen"]
+margin_right = 320.0
+margin_bottom = 224.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameoverScreen"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 70.0
+margin_top = 77.0
+margin_right = 249.0
+margin_bottom = 146.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="GameoverScreen/VBoxContainer"]
+margin_right = 179.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.984314, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.984314, 0, 1 )
+custom_constants/shadow_offset_x = 2
+text = "GAME OVER"
+
+[node name="ButtonRetry" type="Button" parent="GameoverScreen/VBoxContainer"]
+margin_left = 64.0
+margin_top = 48.0
+margin_right = 114.0
+margin_bottom = 69.0
+size_flags_horizontal = 4
+text = "RETRY"
+[connection signal="pressed" from="GameoverScreen/VBoxContainer/ButtonRetry" to="." method="_on_ButtonRetry_pressed"]

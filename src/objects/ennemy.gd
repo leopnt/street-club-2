@@ -1,5 +1,8 @@
 extends "res://src/objects/character.gd"
 
+# how close the ai has to be from the player to considered itself arrived
+# in y axis (pixels)
+const arrived_y_bias = 5.0
 
 func _ready():
 	power_off() # ennemy are paused by default
@@ -38,7 +41,7 @@ func _seek_and_arrive(targetPos:Vector2) -> bool:
 	if abs(dir.x) > 1.0: # check arrived
 		move_x = dir.project(Vector2.RIGHT).normalized()
 		has_arrived = false
-	if abs(dir.y) > 1.0:
+	if abs(dir.y) > 5.0:
 		move_y = dir.project(Vector2.DOWN).normalized()
 		has_arrived = false
 	
@@ -49,6 +52,8 @@ func _smart_attack() -> void:
 	if $AttackTrigger.is_stopped():
 		$AttackTrigger.wait_time = rand_range(1, 4)
 		$AttackTrigger.start()
+		print("Ennemy::>AttackTrigger started ", $AttackTrigger.wait_time, "s")
 
 func _on_AttackTrigger_timeout():
+	print("Ennemy::>Punching...")
 	_punch()

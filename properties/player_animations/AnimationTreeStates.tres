@@ -1,10 +1,13 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=30 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=33 format=2]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "attack1"
 
 [sub_resource type="AnimationNodeAnimation" id=2]
 animation = "attack2"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "death"
 
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "fall"
@@ -75,11 +78,17 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
 [resource]
 states/attack1/node = SubResource( 1 )
 states/attack1/position = Vector2( -53.931, -221.768 )
 states/attack2/node = SubResource( 2 )
 states/attack2/position = Vector2( 507.035, -131.768 )
+states/death/node = SubResource( 30 )
+states/death/position = Vector2( 197.035, 119.378 )
 states/fall/node = SubResource( 3 )
 states/fall/position = Vector2( 361.069, -306.768 )
 states/idle/node = SubResource( 4 )
@@ -92,5 +101,5 @@ states/jump_kick/position = Vector2( -53.931, -297.045 )
 "states/jump_kick 2/position" = Vector2( 507.035, -214.307 )
 states/run/node = SubResource( 8 )
 states/run/position = Vector2( 325.442, 14.2361 )
-transitions = [ "idle", "run", SubResource( 9 ), "idle", "jump", SubResource( 10 ), "idle", "attack1", SubResource( 11 ), "attack1", "idle", SubResource( 12 ), "run", "attack1", SubResource( 13 ), "jump", "fall", SubResource( 14 ), "fall", "run", SubResource( 15 ), "fall", "idle", SubResource( 16 ), "run", "jump", SubResource( 17 ), "attack1", "run", SubResource( 18 ), "run", "idle", SubResource( 19 ), "jump", "jump_kick", SubResource( 20 ), "fall", "jump_kick", SubResource( 21 ), "jump_kick", "attack1", SubResource( 22 ), "jump_kick 2", "attack2", SubResource( 23 ), "idle", "attack2", SubResource( 24 ), "attack2", "idle", SubResource( 25 ), "attack2", "run", SubResource( 26 ), "run", "attack2", SubResource( 27 ), "jump", "jump_kick 2", SubResource( 28 ), "fall", "jump_kick 2", SubResource( 29 ) ]
-graph_offset = Vector2( -131.965, -356.382 )
+transitions = [ "idle", "run", SubResource( 9 ), "idle", "jump", SubResource( 10 ), "idle", "attack1", SubResource( 11 ), "attack1", "idle", SubResource( 12 ), "run", "attack1", SubResource( 13 ), "jump", "fall", SubResource( 14 ), "fall", "run", SubResource( 15 ), "fall", "idle", SubResource( 16 ), "run", "jump", SubResource( 17 ), "attack1", "run", SubResource( 18 ), "run", "idle", SubResource( 19 ), "jump", "jump_kick", SubResource( 20 ), "fall", "jump_kick", SubResource( 21 ), "jump_kick", "attack1", SubResource( 22 ), "jump_kick 2", "attack2", SubResource( 23 ), "idle", "attack2", SubResource( 24 ), "attack2", "idle", SubResource( 25 ), "attack2", "run", SubResource( 26 ), "run", "attack2", SubResource( 27 ), "jump", "jump_kick 2", SubResource( 28 ), "fall", "jump_kick 2", SubResource( 29 ), "idle", "death", SubResource( 31 ), "run", "death", SubResource( 32 ) ]
+graph_offset = Vector2( -131.965, -2.93398 )
