@@ -79,6 +79,7 @@ func _punch() -> void:
 		# check if collider is a Character object
 		if collider.has_method("take_damage"):
 			collider.take_damage(power)
+			$Audio/punch.play()
 	
 	state_machine.travel("attack1")
 

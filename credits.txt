@@ -1,3 +1,10 @@
-chasersgaming: map tiles and characters spritesheets
-FloatingTable101: protagonist and ennemy spritesheets redesign
-wepfont: Outrun_future font
+Protagonist and ennemy spritesheets redesign:
+- FloatingTable101
+Map tiles and characters spritesheets:
+- chasersgaming
+Font:
+- wepfont: Outrun future
+Music: 
+- Jim Hall: The Contra Chop
+Sounds:
+- newagesoup: punch sound

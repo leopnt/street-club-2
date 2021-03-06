@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Jim Hall - The Contra Chop.ogg-e151c08080e0d6150ea7df9fa4dbc95f.oggstr"
+
+[deps]
+
+source_file="res://assets/Audio/Music/Jim Hall - The Contra Chop.ogg"
+dest_files=[ "res://.import/Jim Hall - The Contra Chop.ogg-e151c08080e0d6150ea7df9fa4dbc95f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
