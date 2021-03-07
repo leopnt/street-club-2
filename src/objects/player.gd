@@ -10,28 +10,18 @@ func _process(delta):
 	apply_inputs()
 
 func apply_inputs() -> void:
-	var move_dir = Vector2()
-	var is_move_input_active = false
+	var move_dir = Vector2.ZERO
 	if Input.is_action_pressed('ui_right'):
 		move_dir.x += 1
-		is_move_input_active = true
 	if Input.is_action_pressed('ui_left'):
 		move_dir.x -= 1
-		is_move_input_active = true
 	if Input.is_action_pressed('ui_down'):
 		move_dir.y += 1
-		is_move_input_active = true
 	if Input.is_action_pressed('ui_up'):
 		move_dir.y -= 1
-		is_move_input_active = true
 	move_dir = move_dir.normalized()
 	
-	# avoid calling character move every frame
-	if is_move_input_active:
-		_look_at(move_dir)
-		_move(move_dir)
-	else:
-		 _idle()
+	_move(move_dir)
 
 func _input(event):
 	if event.is_action_type():
@@ -56,7 +46,7 @@ func _special_punch() -> void:
 
 func _dispose() -> void:
 	print("Player::>player dead")
-	state_machine.travel("death")
+	._dispose()
 	Global.ui.show_gameover()
 
 

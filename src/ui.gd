@@ -11,15 +11,15 @@ func update() -> void:
 	progress_bar.value = Utils.map(player.life, 0, player.max_life, 0, 100)
 
 func show_gameover() -> void:
-	$GameoverScreen/AnimationPlayer.play("fade_in")
-	$GameoverScreen/VBoxContainer/ButtonRetry.grab_focus()
 	get_tree().paused = true
+	$GameoverScreen/AnimationPlayer.play("fade_in")
+	$GameoverScreen/VBoxContainer/ButtonRestart.grab_focus()
 
 func show_win() -> void:
+	get_tree().paused = true
 	$WinScreen/AnimationPlayer.play("fade_in")
 	$WinScreen/VBoxContainer/ButtonRestart.grab_focus()
-	get_tree().paused = true
 
 func _on_ButtonRestart_pressed():
-	get_tree().paused = false
 	get_tree().reload_current_scene()
+	get_tree().paused = false

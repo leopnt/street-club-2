@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/renegade_spritesheet.png-688e2d104e3b785d3b95e27bd26cc297.stex"
+path="res://.import/sage_logo.png-80041d125cc020b4606055f67d3efc58.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Characters/renegade_spritesheet.png"
-dest_files=[ "res://.import/renegade_spritesheet.png-688e2d104e3b785d3b95e27bd26cc297.stex" ]
+source_file="res://sage_logo.png"
+dest_files=[ "res://.import/sage_logo.png-80041d125cc020b4606055f67d3efc58.stex" ]
 
 [params]
 

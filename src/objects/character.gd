@@ -6,6 +6,8 @@ but only for child classes (see empty properties)
 
 extends KinematicBody2D
 
+signal dead
+
 export (int) var max_life:int = 100
 onready var life:int = max_life
 export (int) var power:int = 20 # damage for punch
@@ -28,12 +30,14 @@ func _move(dir:Vector2) -> void:
 	velocity = move_and_slide(velocity)
 	if !is_jumping():
 		state_machine.travel("run")
+	
+	_idle() if (dir == Vector2.ZERO) else _look_at(dir)
 
 func _look_at(dir:Vector2) -> void:
 	if !dir.x == 0.0: # prevent 0 size rayCast for up/down move
-		$Jumpable/Sprite.flip_h = (velocity.x < 0)
 		look.x = dir.project(Vector2.RIGHT).normalized().x
 		$AttackRay.cast_to.x = hit_range * look.x
+		$Jumpable/Sprite.flip_h = ($AttackRay.cast_to.x < 0)
 
 func _idle() -> void:
 	""" should be called in a _process() """
@@ -44,12 +48,18 @@ func take_damage(damage:int) -> void:
 	life -= damage
 	Global.ui.update()
 	print("Character::>", self, " took damage. Life: ", life)
-	if life <= 0:
+	if is_dead():
 		_dispose()
+
+func is_dead() -> bool:
+	if life <= 0:
+		return true
+	return false
 
 func _dispose() -> void:
 	# virtual function to handle death of character
-	pass
+	state_machine.travel("death")
+	emit_signal("dead")
 
 func _jump() -> void:
 	if !is_jumping():

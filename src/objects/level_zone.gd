@@ -10,7 +10,7 @@ func _ready():
 	for child in get_children():
 		if child is Ennemy:
 			ennemies_remaining += 1
-			child.connect("tree_exited", self, "_on_ennemy_tree_exited")
+			child.connect("dead", self, "_on_ennemy_dead")
 
 func _spawn_ennemies() -> void:
 	for child in get_children():
@@ -23,7 +23,7 @@ func _on_Area2D_body_entered(body):
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
 		_spawn_ennemies()
 
-func _on_ennemy_tree_exited() -> void:
+func _on_ennemy_dead() -> void:
 	ennemies_remaining -= 1
 	if ennemies_remaining <= 0:
 		_on_level_zone_cleared()

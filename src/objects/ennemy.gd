@@ -6,20 +6,23 @@ const arrived_y_bias = 5.0
 
 func _ready():
 	power_off() # ennemy are paused by default
+	hide()
 
 func _dispose():
+	._dispose()
 	print("Ennemy::>", self, " queue_free...")
-	queue_free()
+	power_off()
+	$TimerAutokill.start()
 
 func power_off() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
-	hide()
+	$AttackTrigger.stop()
 	set_process(false)
 
 func power_on() -> void:
 	$CollisionShape2D.set_deferred("disabled", false)
-	show()
 	set_process(true)
+	show()
 
 func _process(delta):
 	_look_at(Global.player.position - global_position)
@@ -57,3 +60,6 @@ func _smart_attack() -> void:
 func _on_AttackTrigger_timeout():
 	print("Ennemy::>Punching...")
 	_punch()
+
+func _on_TimerAutokill_timeout():
+	queue_free()
