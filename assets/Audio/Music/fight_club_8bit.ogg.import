@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fight_club_8bit.ogg-2d7e01302bde711f2be6ccff5f35a699.oggstr"
+
+[deps]
+
+source_file="res://assets/Audio/Music/fight_club_8bit.ogg"
+dest_files=[ "res://.import/fight_club_8bit.ogg-2d7e01302bde711f2be6ccff5f35a699.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

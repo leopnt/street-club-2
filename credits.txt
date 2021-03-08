@@ -8,5 +8,6 @@ Music:
 - Jim Hall: The Contra Chop
 Sounds:
 - newagesoup: punch sound
+- Ekokubza123: special punch sound
 CRT tv effect:
 - hiulit

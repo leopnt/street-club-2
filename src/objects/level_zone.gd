@@ -1,4 +1,4 @@
-extends Node2D
+extends YSort
 
 # define ennemy class
 const Ennemy = preload("res://src/objects/ennemy.gd")

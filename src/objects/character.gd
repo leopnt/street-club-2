@@ -12,7 +12,7 @@ export (int) var max_life:int = 100
 onready var life:int = max_life
 export (int) var power:int = 20 # damage for punch
 export (int) var jump:int = 20 # target max jump height
-export (int) var technique:int = 50 # damage for special punch
+export (int) var technique:int = 30 # damage for special punch
 export (int) var speed:int = 50
 onready var hit_range:int = $AttackRay.cast_to.length()
 var velocity:Vector2 = Vector2()
@@ -99,6 +99,7 @@ func _special_punch() -> void:
 		# check if collider is a Character object
 		if collider.has_method("take_damage"):
 			collider.take_damage(technique)
+			$Audio/punch_special.play()
 	
 	state_machine.travel("attack2")
 

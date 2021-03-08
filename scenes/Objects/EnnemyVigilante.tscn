@@ -1,0 +1,40 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://properties/AnimationTreeStates.tres" type="AnimationNodeStateMachine" id=1]
+[ext_resource path="res://properties/ennemy_animations/renegade/fall.tres" type="Animation" id=2]
+[ext_resource path="res://properties/ennemy_animations/renegade/attack2.tres" type="Animation" id=3]
+[ext_resource path="res://properties/ennemy_animations/renegade/idle.tres" type="Animation" id=4]
+[ext_resource path="res://properties/ennemy_animations/renegade/death.tres" type="Animation" id=5]
+[ext_resource path="res://assets/Characters/vigilante_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://properties/ennemy_animations/renegade/run.tres" type="Animation" id=7]
+[ext_resource path="res://properties/ennemy_animations/renegade/jump.tres" type="Animation" id=8]
+[ext_resource path="res://properties/ennemy_animations/renegade/jump_kick.tres" type="Animation" id=9]
+[ext_resource path="res://properties/ennemy_animations/renegade/attack1.tres" type="Animation" id=10]
+[ext_resource path="res://scenes/Objects/Ennemy.tscn" type="PackedScene" id=11]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+
+[node name="EnnemyVigilante" instance=ExtResource( 11 )]
+
+[node name="punch_special" parent="Audio" index="1"]
+volume_db = 0.0
+
+[node name="AnimationTree" parent="Jumpable" index="2"]
+tree_root = ExtResource( 1 )
+active = true
+parameters/playback = SubResource( 5 )
+
+[node name="Sprite" parent="Jumpable" index="3"]
+texture = ExtResource( 6 )
+vframes = 7
+frame = 26
+
+[node name="AnimationPlayer" parent="Jumpable/Sprite" index="0"]
+anims/attack1 = ExtResource( 10 )
+anims/attack2 = ExtResource( 3 )
+anims/death = ExtResource( 5 )
+anims/fall = ExtResource( 2 )
+anims/idle = ExtResource( 4 )
+anims/jump = ExtResource( 8 )
+anims/jump_kick = ExtResource( 9 )
+anims/run = ExtResource( 7 )

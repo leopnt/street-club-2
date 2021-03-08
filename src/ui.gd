@@ -1,6 +1,7 @@
 extends Control
 
 onready var progress_bar:ProgressBar = $MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/ProgressBar
+onready var stamina_bar:ProgressBar = $MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/ProgressBar
 
 func _ready():
 	Global.ui = self
@@ -9,6 +10,8 @@ func _ready():
 func update() -> void:
 	var player = Global.player
 	progress_bar.value = Utils.map(player.life, 0, player.max_life, 0, 100)
+	stamina_bar.value = Utils.map(player.stamina, 0, player.max_stamina, 0, 100)
+
 
 func show_gameover() -> void:
 	get_tree().paused = true

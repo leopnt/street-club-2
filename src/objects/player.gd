@@ -1,6 +1,6 @@
 extends "res://src/objects/character.gd"
 
-export (int) var max_stamina:int = 20
+export (int) var max_stamina:int = 3
 var stamina:int = max_stamina
 
 func _ready():
@@ -25,16 +25,15 @@ func apply_inputs() -> void:
 
 func _input(event):
 	if event.is_action_type():
-		if stamina > 0:
-			if event.is_action_pressed("A"):
-				_special_punch()
-			if event.is_action_pressed("B"):
-				_punch()
-			if event.is_action_pressed("C"):
-				_jump()
-				
-			if stamina < max_stamina:
-				$StaminaReloader.start()
+		if event.is_action_pressed("A") && stamina > 0:
+			_special_punch()
+		if event.is_action_pressed("B"):
+			_punch()
+		if event.is_action_pressed("C"):
+			_jump()
+			
+		if stamina < max_stamina && $StaminaReloader.is_stopped():
+			$StaminaReloader.start()
 
 
 func _punch() -> void:
@@ -43,6 +42,7 @@ func _punch() -> void:
 func _special_punch() -> void:
 	._special_punch()
 	stamina -= 1
+	Global.ui.update()
 
 func _dispose() -> void:
 	print("Player::>player dead")
@@ -53,5 +53,6 @@ func _dispose() -> void:
 func _on_StaminaReloader_timeout():
 	if stamina < max_stamina:
 		stamina += 1
+		Global.ui.update()
 	else:
 		$StaminaReloader.stop()

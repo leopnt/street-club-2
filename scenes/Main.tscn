@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Objects/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Objects/EnnemyVigilante.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Objects/Map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Objects/LevelZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/objects/camera.gd" type="Script" id=6]
@@ -31,34 +32,148 @@ polygon = PoolVector2Array( -120.171, -13.0975, 120.262, -13.6554, 120.006, 56.2
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -60.6814, 13.8593 )
+position = Vector2( -80.5027, 21.4103 )
 
 [node name="LevelZone" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 75.6737, 0 )
+position = Vector2( 89, 0 )
 
-[node name="EnnemyRenegade5" parent="YSort/LevelZone" groups=[
+[node name="EnnemyVigilante" parent="YSort/LevelZone" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( -204.854, 79.5597 )
+
+[node name="EnnemyRenegade" parent="YSort/LevelZone" groups=[
 "characters",
 ] instance=ExtResource( 10 )]
-position = Vector2( 153.187, 55.559 )
-
-[node name="EnnemyRenegade6" parent="YSort/LevelZone" groups=[
-"characters",
-] instance=ExtResource( 10 )]
-position = Vector2( -90.479, -51.5905 )
+position = Vector2( 14.4376, -60.5375 )
 
 [node name="LevelZone2" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 180.445, 0 )
-is_last_level = true
+position = Vector2( 356.427, 0 )
+
+[node name="EnnemyVigilante" parent="YSort/LevelZone2" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( 16.8228, -54.966 )
 
 [node name="EnnemyRenegade3" parent="YSort/LevelZone2" groups=[
 "characters",
 ] instance=ExtResource( 10 )]
-position = Vector2( -119.849, 69.0519 )
+position = Vector2( 213.347, 64.5974 )
 
 [node name="EnnemyRenegade4" parent="YSort/LevelZone2" groups=[
 "characters",
 ] instance=ExtResource( 10 )]
-position = Vector2( 61.9087, 0.793701 )
+position = Vector2( 134.962, -44.6421 )
+
+[node name="LevelZone3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 695.476, 0 )
+
+[node name="EnnemyVigilante" parent="YSort/LevelZone3" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( -200.969, 61.9186 )
+
+[node name="EnnemyRenegade3" parent="YSort/LevelZone3" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( 146.076, -50.6054 )
+
+[node name="EnnemyRenegade4" parent="YSort/LevelZone3" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( -203.919, 0.766281 )
+
+[node name="EnnemyRenegade5" parent="YSort/LevelZone3" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( -200.555, -30.3469 )
+
+[node name="LevelZone4" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 897.778, 0.766281 )
+
+[node name="EnnemyVigilante" parent="YSort/LevelZone4" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( -189.064, 8.74065 )
+
+[node name="EnnemyVigilante2" parent="YSort/LevelZone4" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( 5.37726, -40.9829 )
+
+[node name="EnnemyRenegade3" parent="YSort/LevelZone4" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( 197.045, -13.7943 )
+
+[node name="EnnemyRenegade4" parent="YSort/LevelZone4" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( -199.95, 53.1505 )
+
+[node name="EnnemyRenegade5" parent="YSort/LevelZone4" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( 158.522, 18.7901 )
+
+[node name="LevelZone5" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 1234.43, 0.766281 )
+is_last_level = true
+
+[node name="EnnemyVigilante" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( -277.065, 63.4442 )
+
+[node name="EnnemyVigilante2" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( 193.775, 63.1356 )
+
+[node name="EnnemyVigilante3" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( 161.821, -8.34056 )
+
+[node name="EnnemyRenegade3" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( 197.045, -13.7943 )
+
+[node name="EnnemyRenegade4" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( -286.762, 4.39302 )
+
+[node name="EnnemyVigilante4" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 3 )]
+position = Vector2( -326.346, 14.5882 )
+
+[node name="EnnemyRenegade7" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( -309.357, 43.6368 )
+
+[node name="EnnemyRenegade5" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( 158.522, 18.7901 )
+
+[node name="EnnemyRenegade6" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( 195.388, 40.1958 )
+
+[node name="EnnemyRenegade8" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( 291.714, 17.6008 )
+
+[node name="EnnemyRenegade9" parent="YSort/LevelZone5" groups=[
+"characters",
+] instance=ExtResource( 10 )]
+position = Vector2( 328.579, 39.0065 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
